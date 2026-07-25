@@ -24,13 +24,18 @@ load_dotenv(BASE_DIR / ".env")
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-iv-d2zdlmp$fqzdrbwu8@ckdkyn!ugq=xd35b=jxlq*q&hy+-='
-
+SECRET_KEY = os.getenv(
+    "SECRET_KEY",
+    "django-insecure-iv-d2zdlmp$fqzdrbwu8@ckdkyn!ugq=xd35b=jxlq*q&hy+-="
+)
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    ".onrender.com",
+]
 
 # Application definition
 
@@ -123,9 +128,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 GEOAPIFY_API_KEY = os.getenv("GEOAPIFY_API_KEY")
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://YOUR-FRONTEND.vercel.app",
 ]

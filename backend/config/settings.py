@@ -29,12 +29,12 @@ SECRET_KEY = os.getenv(
     "django-insecure-iv-d2zdlmp$fqzdrbwu8@ckdkyn!ugq=xd35b=jxlq*q&hy+-="
 )
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "True") == "True"
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    ".onrender.com",
+    "*",
 ]
 
 # Application definition
@@ -134,5 +134,8 @@ GEOAPIFY_API_KEY = os.getenv("GEOAPIFY_API_KEY")
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://YOUR-FRONTEND.vercel.app",
 ]
+
+frontend_url = os.getenv("FRONTEND_URL")
+if frontend_url:
+    CORS_ALLOWED_ORIGINS.append(frontend_url)

@@ -128,32 +128,6 @@ hos-companion/
 
 ---
 
-# Screenshots
-
-## Home Page
-
-_Add screenshot here_
-
----
-
-## Route Map
-
-_Add screenshot here_
-
----
-
-## HOS Analysis
-
-_Add screenshot here_
-
----
-
-## PDF Export
-
-_Add screenshot here_
-
----
-
 # Installation
 
 ## Clone the repository
